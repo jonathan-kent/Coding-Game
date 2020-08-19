@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Coding Game</title>
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+      }
+      .below {
+        width: 960px;
+        height: 290px;
+        margin: 0 auto;
+      }
+      textarea {
+        width: 478px;
+        height: inherit;
+        float: left;
+        margin: 0;
+        padding: 0;
+      }
+      .submitWrapper {
+        text-align: center;
+      }
+      input[type=button]{
+        background-color: #2c8fab;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+      .instructions {
+        font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier;
+        display: inline-block;
+        width: 478px;
+        height: inherit;
+        border: solid;
+        border-width: 1px;
+        margin: 0;
+        padding: 0;
+        overflow-y: scroll;
+      }
+    </style>
+</head>
+<body>
+<div style="text-align: center;">
+  <input type="button" value="Level 1" id="level" onClick="chooseLevel(1)">
+  <input type="button" value="Level 2" id="level" onClick="chooseLevel(2)">
+  <input type="button" value="Level 3" id="level" onClick="chooseLevel(3)">
+  <canvas id="canvas" width="960" height="560"></canvas>
+</div>
+<form>
+  <div class="below">
+    <textarea name="code" id="code">Input your code here!</textarea>
+    <div class="instructions">
+      <h1 style="text-align: center">INSTRUCTIONS</h1><br>
+      Navigate the robot to the green finish square by running your script. When the robot
+      moves over red squares, the value of the square is added to the robot's sum. In order to
+      win, the robot's sum must be equal to the value indicated on the finish line.<br><br>
+      <h2>Keywords:</h2>
+      <b>MOVE_UP, MOVE_DOWN, MOVE_RIGHT, MOVE_LEFT</b>:<br>to move the character.<br>
+      <b>UP, DOWN, RIGHT, LEFT</b>:<br>to check the cell adjacent to the character.<br>
+      <b>SUM</b>: the value of the player's sum.<br>
+      <b>WALL</b>: boolean to check if a cell is a wall.<br><br>
+      <h2>Operators:</h2>
+      <b>is</b>: checks equality.<br>
+      <b>not</b>: checks inequality.<br>
+      <b>< / <= </b>: less than / less than or equal.<br>
+      <b>> / >= </b>: greater than / greater than or equal.<br>
+      <b>and / or </b>: && and || operators.<br><br>
+      <h2>Conditionals and Loops:</h2>
+      <b>if a [operator] b {}</b>: if a satisfies b do...<br>
+      <b>else if a [operator] b {}</b>: used after an if statement<br>
+      <b>else {}</b>: if the condition was not satisfied do...<br>
+      <b>while a [operator] b {}</b>: while a satisfies b do...<br>
+      <b>for a in range(begin, end, +/-increment) {}</b>:<br>for a between begin and end do... then increment a.<br><br>
+      <h2>Variables</h2>
+      <b>var x = value</b>: defines a variable called x and assigns a value to it.<br>
+      <b>x = newValue</b>: assigns a new value to an already defined variable.<br><br>
+      <h2>Example Code:</h2><br>
+      MOVE_RIGHT;<br>
+      if UP is WALL {<br>
+        &nbsp&nbsp&nbspMOVE_DOWN;<br>
+      }<br>
+      else if DOWN not WALL {<br>
+        &nbsp&nbsp&nbspMOVE_RIGHT;<br>
+      }<br>
+      else {<br>
+        &nbsp&nbsp&nbspMOVE_LEFT;<br>
+      }<br>
+      var amount = 2;<br>
+      amount = 5;<br>
+      for i in range(0,amount,+1){<br>
+        &nbsp&nbsp&nbspwhile SUM <= i and UP not WALL{<br>
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbspMOVE_UP;<br>
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbspMOVE_DOWN;<br>
+        &nbsp&nbsp&nbsp}<br>
+      }
+    </div>
+    <div class="submitWrapper">
+      <input type="button" value="RUN" id="code" onClick="onSubmit()">
+    </div>
+  </div>
+</form>
+
+<script type="text/javascript" src="main.js"></script>
